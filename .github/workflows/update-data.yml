@@ -33,7 +33,7 @@ jobs:
 
       - name: Commit refreshed data
         run: |
-          if git diff --quiet -- live-data.js; then
+          if [ -z "$(git status --porcelain -- live-data.js)" ]; then
             echo "No data changes"
             exit 0
           fi
